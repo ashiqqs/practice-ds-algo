@@ -7,19 +7,16 @@ namespace PracticeDS_Algo
     {
         static void Main(string[] args)
         {
-            DoubleLinkedList<int> my_linked_list = new DoubleLinkedList<int>(1);
-            my_linked_list.AddFirst(0);
-            my_linked_list.AddLast(2);
-            my_linked_list.AddAt(5,1);
+            MyQueue<int> queue = new MyQueue<int>();
 
-            Console.WriteLine(my_linked_list);
-            //my_linked_list.RemoveFirst();
-            //my_linked_list.RemoveLast();
-            Console.WriteLine(my_linked_list);
-            my_linked_list.AddAt(15, 0);
-            Console.WriteLine(my_linked_list);
-            Console.WriteLine(my_linked_list.RemoveAt(0));
-            Console.WriteLine(my_linked_list);
+            queue.Enqueue(15);
+            queue.Enqueue(25);
+            queue.Enqueue(35);
+            queue.Enqueue(45);
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Length);
+            Console.WriteLine(queue.Front());
+
         }
     }
 }

@@ -13,7 +13,15 @@ namespace PracticeDS_Algo
         }
         Node<T> Head { get; set; }
         Node<T> Tail { get; set; }
-        public int Size { get; set; }
+        public int Length { get; private set; }
+        public T FirstVal()
+        {
+            return Head.Item;
+        }
+        public T LastVal()
+        {
+            return Tail.Item;
+        }
         public T GetByIndex(int index)
         {
             return GetNodeByIndex(index).Item;
@@ -37,7 +45,7 @@ namespace PracticeDS_Algo
                 newNode.Next = selectedNode;
                 selectedNode.Previous.Next = newNode;
                 selectedNode.Previous = newNode;
-                Size += 1;
+                Length += 1;
             }
             else
             {
@@ -45,7 +53,7 @@ namespace PracticeDS_Algo
                 newNode.Previous = selectedNode.Previous;
                 selectedNode.Previous.Next = newNode;
                 selectedNode.Previous = newNode;
-                Size += 1;
+                Length += 1;
             }
         }
         public void AddFirst(T value)
@@ -62,7 +70,7 @@ namespace PracticeDS_Algo
                 Head.Previous = head;
                 Head = head;
             }
-            Size += 1;
+            Length += 1;
         }
         public void AddLast(T value)
         {
@@ -79,7 +87,7 @@ namespace PracticeDS_Algo
                 Tail = node;
             }
 
-            Size += 1;
+            Length += 1;
         }
         public void Remove(T item, bool isAll = true)
         {
@@ -98,30 +106,30 @@ namespace PracticeDS_Algo
         {
             Head.Next.Previous = null;
             Head = Head.Next;
-            Size -= 1;
+            Length -= 1;
         }
         public void RemoveLast()
         {
             Tail.Previous.Next = null;
             Tail = Tail.Previous;
-            Size -= 1;
+            Length -= 1;
         }
         public T RemoveAt(int index)
         {
             if (index == 0) { var item = Head.Item; RemoveFirst(); return item; }
-            else if(index== Size - 1) {var  item = Tail.Item; RemoveLast(); return item; }
+            else if(index== Length - 1) {var  item = Tail.Item; RemoveLast(); return item; }
             else
             {
                 Node<T> selectedNode = GetNodeByIndex(index);
                 selectedNode.Previous.Next = selectedNode.Next;
                 selectedNode.Next.Previous = selectedNode.Previous;
-                Size -= 1;
+                Length -= 1;
                 return selectedNode.Item;
             }
         }
         Node<T> GetNodeByIndex(int index)
         {
-            if (index >= Size || index < 0)
+            if (index >= Length || index < 0)
             {
                 throw new IndexOutOfRangeException("Position is out of index");
             }
@@ -147,7 +155,7 @@ namespace PracticeDS_Algo
             {
                 node.Previous.Next = node.Next;
                 node.Next.Previous = node.Previous;
-                Size -= 1;
+                Length -= 1;
             }
         }
 
