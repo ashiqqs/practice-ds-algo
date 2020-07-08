@@ -59,5 +59,61 @@ namespace PracticeDS_Algo.Algorithm.Sort
             }
             return items;
         }
+        public string[] Ascending(string[] items)
+        {
+            Helper helper = new Helper();
+            string smallestStr;
+            int smallestIndex, endPoint = items.Length-1;
+            bool isSmallFound;
+            for(int i=0; i<endPoint; i++)
+            {
+                isSmallFound = false;
+                smallestStr = items[i];
+                smallestIndex = i;
+                for (int j=i+1; j<=endPoint; j++)
+                {
+                    if(helper.StrComp(smallestStr, items[j]) < 0)
+                    {
+                        smallestStr = items[j];
+                        smallestIndex = j;
+                        isSmallFound = true;
+                    }
+                }
+                if (isSmallFound)
+                {
+                    items[smallestIndex] = items[i];
+                    items[i] = smallestStr;
+                }
+            }
+            return items;
+        }
+        public string[] Descending(string[] items)
+        {
+            Helper helper = new Helper();
+            string smallestStr;
+            int smallestIndex, endPoint = items.Length - 1;
+            bool isSmallFound;
+            for (int i = 0; i < endPoint; i++)
+            {
+                isSmallFound = false;
+                smallestStr = items[i];
+                smallestIndex = i;
+                for (int j = i + 1; j <= endPoint; j++)
+                {
+                    if (helper.StrComp(smallestStr, items[j]) > 0)
+                    {
+                        smallestStr = items[j];
+                        smallestIndex = j;
+                        isSmallFound = true;
+                    }
+                }
+                if (isSmallFound)
+                {
+                    items[smallestIndex] = items[i];
+                    items[i] = smallestStr;
+                }
+            }
+            return items;
+        }
     }
 }

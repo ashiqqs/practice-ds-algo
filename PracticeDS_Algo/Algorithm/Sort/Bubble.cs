@@ -55,5 +55,50 @@ namespace PracticeDS_Algo.Algorithm.Sort
             }
             return items;
         }
+
+        public string[] Ascending(string[] items)
+        {
+            Helper helper = new Helper();
+            string temp;
+            int endPoint = items.Length - 1;
+            for(int i=0; i<endPoint; i++)
+            {
+                bool isSwap = false;
+                for(int j=0; j<endPoint-i; j++)
+                {
+                    if(helper.StrComp(items[j], items[j + 1]) < 0)
+                    {
+                        temp = items[j];
+                        items[j] = items[j + 1];
+                        items[j + 1] = temp;
+                        isSwap = true;
+                    }
+                }
+                if (!isSwap) { break; }
+            }
+            return items;
+        }
+        public  string[] Descending(string[] items)
+        {
+            Helper helper = new Helper();
+            string temp;
+            int endPoint = items.Length - 1;
+            for (int i = 0; i < endPoint; i++)
+            {
+                bool isSwap = false;
+                for(int j=0; j<endPoint-i; j++)
+                {
+                    if(helper.StrComp(items[j], items[j + 1]) > 0)
+                    {
+                        temp = items[j];
+                        items[j] = items[j + 1];
+                        items[j + 1] = temp;
+                        isSwap = true;
+                    }
+                    if (!isSwap) { break; }
+                }
+            }
+            return items;
+        }
     }
 }
