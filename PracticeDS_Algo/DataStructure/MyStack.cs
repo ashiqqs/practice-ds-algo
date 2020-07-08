@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PracticeDS_Algo
+namespace PracticeDS_Algo.DataStructure
 {
     public class MyStack<T>
     {

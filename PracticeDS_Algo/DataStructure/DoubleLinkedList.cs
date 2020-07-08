@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PracticeDS_Algo
+namespace PracticeDS_Algo.DataStructure
 {
     public class DoubleLinkedList<T>
     {
@@ -104,15 +104,33 @@ namespace PracticeDS_Algo
         }
         public void RemoveFirst()
         {
-            Head.Next.Previous = null;
-            Head = Head.Next;
-            Length -= 1;
+            if (Length > 1)
+            {
+                Head.Next.Previous = null;
+                Head = Head.Next;
+                Length -= 1;
+            }
+            else
+            {
+                Head = null;
+                Tail = null;
+                Length = 0;
+            }
         }
         public void RemoveLast()
         {
-            Tail.Previous.Next = null;
-            Tail = Tail.Previous;
-            Length -= 1;
+            if (Length > 1)
+            {
+                Tail.Previous.Next = null;
+                Tail = Tail.Previous;
+                Length -= 1;
+            }
+            else
+            {
+                Head = null;
+                Tail = null;
+                Length = 0;
+            }
         }
         public T RemoveAt(int index)
         {
