@@ -13,20 +13,32 @@ namespace PracticeDS_Algo
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
-        public int[] GetRandomNumbers(int length)
+        public int[] GetRandomNumbers(int length=10, int min=0, int max=100)
         {
             int[] numbers = new int[length];
             Random random = new Random();
             for (int i = 0; i < length; i++)
             {
-                numbers[i] = random.Next(0, 100);
+                numbers[i] = random.Next(min,max);
             }
             return numbers;
         }
-        public string RandomStr(int maxSize)
+        public string[] GetRandomStr(int numberOfStr=10, int wordSize=5)
         {
-            
-            return null;
+            Random random = new Random();
+            const string chars = "ABCSDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstwxyz";
+            string[] words = new string[numberOfStr];
+            for(int i=0; i<numberOfStr; i++)
+            {
+                StringBuilder word = new StringBuilder();
+                for(int j=0; j<wordSize; j++)
+                {
+                    int index = random.Next(0, 51);
+                    word.Append(chars[index]);
+                }
+                words[i] = word.ToString();
+            }
+            return words;
         }
         public void PrintArray<T>(T[] values)
         {

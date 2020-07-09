@@ -34,7 +34,6 @@ namespace PracticeDS_Algo.Algorithm.Sort
             }
             return items;
         }
-
         public int[] Descending(int[] items)
         {
             int endPoint = items.Length;
@@ -55,7 +54,6 @@ namespace PracticeDS_Algo.Algorithm.Sort
             }
             return items;
         }
-
         public string[] Ascending(string[] items)
         {
             Helper helper = new Helper();

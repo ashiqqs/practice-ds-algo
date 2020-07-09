@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PracticeDS_Algo.Algorithm.Sort
 {
-    public class Selection: ISorter
+    public class Selection: ISorter,ITest
     {
         /// <summary>
         /// Time Complexity 
@@ -16,45 +16,44 @@ namespace PracticeDS_Algo.Algorithm.Sort
         /// <returns></returns>
         public int[] Ascending(int[] items)
         {
-            int endPoint = items.Length, smallest = 0, smallestIndex = 0;
+            int endPoint = items.Length, smallestIndex = 0,temp;
             for (int i = 0; i < endPoint; i++)
             {
-                smallest = items[i];
+                smallestIndex = i;
                 for (int j = i + 1; j < endPoint; j++)
                 {
-                    if (smallest > items[j])
+                    if (items[smallestIndex] > items[j])
                     {
-                        smallest = items[j];
                         smallestIndex = j;
                     }
                 }
-                if (items[i] > smallest)
+                if (smallestIndex!=i)
                 {
+                    temp = items[smallestIndex];
                     items[smallestIndex] = items[i];
-                    items[i] = smallest;
+                    items[i] = temp;
                 }
             }
             return items;
         }
-
         public int[] Descending(int[] items)
         {
-            int endPoint = items.Length, largest = 0, largestIndex = 0;
+            int endPoint = items.Length, largestIndex = 0,temp;
             for (int i = 0; i < endPoint; i++)
             {
-                largest = items[i];
+                largestIndex = i;
                 for (int j = i + 1; j < endPoint; j++)
                 {
-                    if (largest < items[j])
+                    if (items[largestIndex] < items[j])
                     {
-                        largest = items[j];
                         largestIndex = j;
                     }
                 }
-                if (items[i] < largest)
+                if (items[i] < items[largestIndex])
                 {
+                    temp = items[largestIndex];
                     items[largestIndex] = items[i];
-                    items[i] = largest;
+                    items[i] = temp;
                 }
             }
             return items;
@@ -62,27 +61,23 @@ namespace PracticeDS_Algo.Algorithm.Sort
         public string[] Ascending(string[] items)
         {
             Helper helper = new Helper();
-            string smallestStr;
             int smallestIndex, endPoint = items.Length-1;
-            bool isSmallFound;
+            string temp;
             for(int i=0; i<endPoint; i++)
             {
-                isSmallFound = false;
-                smallestStr = items[i];
                 smallestIndex = i;
                 for (int j=i+1; j<=endPoint; j++)
                 {
-                    if(helper.StrComp(smallestStr, items[j]) < 0)
+                    if(helper.StrComp(items[smallestIndex], items[j]) < 0)
                     {
-                        smallestStr = items[j];
                         smallestIndex = j;
-                        isSmallFound = true;
                     }
                 }
-                if (isSmallFound)
+                if (i!=smallestIndex)
                 {
+                    temp = items[smallestIndex];
                     items[smallestIndex] = items[i];
-                    items[i] = smallestStr;
+                    items[i] = temp;
                 }
             }
             return items;
@@ -90,30 +85,38 @@ namespace PracticeDS_Algo.Algorithm.Sort
         public string[] Descending(string[] items)
         {
             Helper helper = new Helper();
-            string smallestStr;
+            string temp;
             int smallestIndex, endPoint = items.Length - 1;
-            bool isSmallFound;
             for (int i = 0; i < endPoint; i++)
             {
-                isSmallFound = false;
-                smallestStr = items[i];
                 smallestIndex = i;
                 for (int j = i + 1; j <= endPoint; j++)
                 {
-                    if (helper.StrComp(smallestStr, items[j]) > 0)
+                    if (helper.StrComp(items[smallestIndex], items[j]) > 0)
                     {
-                        smallestStr = items[j];
                         smallestIndex = j;
-                        isSmallFound = true;
                     }
                 }
-                if (isSmallFound)
+                if (i!=smallestIndex)
                 {
+                    temp = items[smallestIndex];
                     items[smallestIndex] = items[i];
-                    items[i] = smallestStr;
+                    items[i] = temp;
                 }
             }
             return items;
+        }
+
+        public void Execute()
+        {
+            Helper helper = new Helper();
+            ISorter sort = new Selection();
+            string[] items = new string[] { "112", "102" };
+            helper.PrintArray<string>(items);
+            var sorted = sort.Ascending(items);
+            helper.PrintArray<string>(sorted);
+            var desc = sort.Descending(items);
+            helper.PrintArray<string>(desc);
         }
     }
 }

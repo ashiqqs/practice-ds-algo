@@ -9,14 +9,8 @@ namespace PracticeDS_Algo
     {
         static void Main(string[] args)
         {
-            Helper helper = new Helper();
-            ISorter sort = new Selection();
-            string[] items = new string[] { "cat","catt", "dog", "bat", "bag", "bad" };
-            helper.PrintArray<string>(items);
-            var sorted = sort.Ascending(items);
-            helper.PrintArray<string>(sorted);
-            var desc = sort.Descending(items);
-            helper.PrintArray<string>(desc);
+            ITest test = new Insertion();
+            test.Execute();
         }
     }
 }
