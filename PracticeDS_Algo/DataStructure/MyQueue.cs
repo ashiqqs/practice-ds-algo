@@ -35,5 +35,6 @@ namespace PracticeDS_Algo.DataStructure
         {
             return Length == 0;
         }
+
     }
 }

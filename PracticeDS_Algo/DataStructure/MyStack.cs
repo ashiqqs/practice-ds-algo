@@ -4,35 +4,64 @@ using System.Text;
 
 namespace PracticeDS_Algo.DataStructure
 {
-    public class MyStack<T>
+    public class MyStack<T> : ITest
     {
-        public MyStack()
+        public MyStack(int size=10000)
         {
-            myList = new DoubleLinkedList<T>();
+            items = new T[size];
         }
-        DoubleLinkedList<T> myList;
-        public int Length { get { return myList.Length; } }
-
-        public void Push(T value)
+        private T[] items;
+        private int top = 0;
+        public int Count { get { return top; } }
+        public void Push(T item)
         {
-            myList.AddLast(value);
+            if (top == items.Length)
+            {
+                Console.WriteLine("Stack is full");
+                return;
+            }
+            items[top++] = item;
         }
         public T Pop()
         {
-            if (IsEmpty()) { throw new IndexOutOfRangeException("Stack is empty!"); }
-            T val = myList.LastVal();
-            myList.RemoveLast();
-            return val;
+            if (top==0)
+            {
+                throw new InsufficientExecutionStackException("Stack is empty"); ;
+            }
+            return items[--top];
         }
         public T Peek()
         {
-            if (IsEmpty()) { throw new IndexOutOfRangeException("Stack is empty!"); }
-            return myList.LastVal();
+            if (top == 0)
+            {
+                throw new InsufficientExecutionStackException("Stack is empty");
+            }
+            return items[top];
+        }
 
+        public void Execute()
+        {
+            MyStack<int> stack = new MyStack<int>(5);
+            stack.Push(5);
+            stack.Push(4);
+            stack.Push(3);
+            stack.Push(2);
+            stack.Push(1);
+            Console.WriteLine("Total item: "+stack.Count);
+            stack.Push(0);
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine("Total item: " + stack.Count);
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Peek());
         }
         public bool IsEmpty()
         {
-            return Length == 0;
+            return top == 0;
         }
+
     }
 }

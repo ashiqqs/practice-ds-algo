@@ -1,5 +1,6 @@
 ﻿using PracticeDS_Algo.Algorithm.Search;
 using PracticeDS_Algo.Algorithm.Sort;
+using PracticeDS_Algo.DataStructure;
 using System;
 using System.Collections.Generic;
 
@@ -9,8 +10,10 @@ namespace PracticeDS_Algo
     {
         static void Main(string[] args)
         {
-            ITest test = new Insertion();
+            ITest test = new CircularQueue<int>();
             test.Execute();
+
         }
+
     }
 }
