@@ -4,12 +4,12 @@ using System.Text;
 
 namespace PracticeDS_Algo.DataStructure
 {
-    public class DoubleLinkedList<T>
+    public class DoublyLinkedList<T>
     {
-        public DoubleLinkedList() { }
-        public DoubleLinkedList(T item)
+        public DoublyLinkedList() { }
+        public DoublyLinkedList(T item)
         {
-            AddLast(item);
+            Postpend(item);
         }
         Node<T> Head { get; set; }
         Node<T> Tail { get; set; }
@@ -31,13 +31,13 @@ namespace PracticeDS_Algo.DataStructure
         /// </summary>
         /// <param name="value"></param>
         /// <param name="position">position will counted as 0 base index</param>
-        public void AddAt(T value, int position)
+        public void AppendAt(T value, int position)
         {
             Node<T> selectedNode = GetNodeByIndex(position);
             Node<T> newNode = new Node<T>(value);
             if (selectedNode.Previous is null)
             {
-                AddFirst(value);
+                Prepend(value);
             }
             else if(selectedNode.Next is null)
             {
@@ -56,7 +56,7 @@ namespace PracticeDS_Algo.DataStructure
                 Length += 1;
             }
         }
-        public void AddFirst(T value)
+        public void Prepend(T value)
         {
             Node<T> head = new Node<T>(value);
             if (Head is null)
@@ -72,7 +72,7 @@ namespace PracticeDS_Algo.DataStructure
             }
             Length += 1;
         }
-        public void AddLast(T value)
+        public void Postpend(T value)
         {
             Node<T> node = new Node<T>(value);
             if (Tail is null)

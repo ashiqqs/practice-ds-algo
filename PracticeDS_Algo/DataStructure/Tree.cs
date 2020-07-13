@@ -9,11 +9,6 @@ namespace PracticeDS_Algo
        
         TreeNode<T> Root { get; set; }
 
-        /// <summary>
-        /// Depth First Search (DFS)
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public void Insert(T value)
         {
             TreeNode<T> newNode = new TreeNode<T>(value);
@@ -46,7 +41,11 @@ namespace PracticeDS_Algo
                 }
             }
         }
-
+        /// <summary>
+        /// Depth First Search (DFS)
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(T item)
         {
             MyStack<TreeNode<T>> stack = new MyStack<TreeNode<T>>();
@@ -64,7 +63,7 @@ namespace PracticeDS_Algo
         }
     }
 
-     class TreeNode<T>
+     public class TreeNode<T>
     {
         public TreeNode(T value)
         {

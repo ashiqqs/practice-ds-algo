@@ -9,7 +9,7 @@ namespace PracticeDS_Algo.DataStructure
         public CircularQueue(int size = 1000)
         {
             length = size;
-            items = new T[size];
+            items = new T[size+1];
         }
         private T[] items;
         private int length;

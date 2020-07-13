@@ -8,7 +8,7 @@ namespace PracticeDS_Algo.DataStructure
     {
         TreeNode<int> Root { get; set; }
 
-        public void Insert(int item)
+        public TreeNode<int> Insert(int item)
         {
             if(Root is null)
             {
@@ -18,6 +18,7 @@ namespace PracticeDS_Algo.DataStructure
             {
                 insert(Root, item);
             }
+            return Root;
         }
         void insert(TreeNode<int> node, int item)
         {
@@ -46,19 +47,31 @@ namespace PracticeDS_Algo.DataStructure
                 }
             }
         }
-        public override string ToString()
+        public void PreOrder(TreeNode<int> root)
         {
-            return getSortedVal(Root, new DoubleLinkedList<int>()).ToString();
+            if (root is null) { return; }
+            Console.Write(root.Item + " ");
+            PreOrder(root.Left);
+            PreOrder(root.Right);
         }
-        public void PrintPreOrder()
+        public void InOrder(TreeNode<int> root)
         {
-            string sortedByPreOrder = getSortedVal(Root, new DoubleLinkedList<int>()).ToString();
-            Console.WriteLine(sortedByPreOrder);
+            if (root is null) { return; }
+            InOrder(root.Left);
+            Console.Write(root.Item+" ");
+            InOrder(root.Right);
         }
-        public void PrintInOrder()
+        public void PostOrder(TreeNode<int> root)
         {
-            inOrder(Root);
-            Console.WriteLine();
+            if (root.Left != null)
+            {
+                PostOrder(root.Left);
+            }
+            if (root.Right != null)
+            {
+                PostOrder(root.Right);
+            }
+            Console.Write(root.Item+" ");
         }
        
         /// <summary>
@@ -83,23 +96,5 @@ namespace PracticeDS_Algo.DataStructure
             }
             return false;
         }
-        void inOrder(TreeNode<int> root)
-        {
-            if(root is null) { return; }
-            Console.Write(root.Item+",");
-            inOrder(root.Left);
-            inOrder(root.Right);
-        }
-
-        DoubleLinkedList<int> getSortedVal(TreeNode<int> node, DoubleLinkedList<int> list)
-        {
-            if(node is null) { return list; }
-            getSortedVal(node.Left, list);
-            list.AddLast(node.Item);
-            getSortedVal(node.Right, list);
-            return list;
-            
-        }
-        
     }
 }

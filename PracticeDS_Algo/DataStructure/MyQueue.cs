@@ -8,15 +8,15 @@ namespace PracticeDS_Algo.DataStructure
     {
         public MyQueue()
         {
-            myList = new DoubleLinkedList<T>();
+            myList = new DoublyLinkedList<T>();
         }
-        DoubleLinkedList<T> myList;
+        DoublyLinkedList<T> myList;
 
         public int Length { get { return myList.Length; } }
 
         public void Enqueue(T value)
         {
-            myList.AddLast(value);
+            myList.Postpend(value);
         }
         public T Dequeue()
         {
