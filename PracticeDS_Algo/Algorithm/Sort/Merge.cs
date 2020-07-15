@@ -11,6 +11,12 @@ namespace PracticeDS_Algo.Algorithm.Sort
             helper = new Helper();
         }
         private Helper helper;
+        /// <summary>
+        /// AllCase O(nlogn) | SpaceComplexity O(n)
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
         public void Ascending(int[] numbers,int left, int right)
         {
             if (left >= right) { return; }
