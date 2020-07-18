@@ -10,7 +10,7 @@ namespace PracticeDS_Algo
     {
         static void Main(string[] args)
         {
-            ITest sort = new Quick();
+            HeapSort sort = new HeapSort();
             sort.Execute();
         }
 

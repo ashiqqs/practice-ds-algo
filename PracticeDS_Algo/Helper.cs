@@ -42,8 +42,13 @@ namespace PracticeDS_Algo
         }
         public void PrintArray<T>(T[] values)
         {
-            string allVal = String.Join(',', values);
-            Console.WriteLine(allVal);
+            int i = 0;
+            Console.WriteLine();
+            foreach (var val in values)
+            {
+                Console.Write($" [{i++}]{val} ");
+            }
+            Console.WriteLine();
         }
 
         /// <summary>
