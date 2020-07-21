@@ -80,7 +80,7 @@ namespace PracticeDS_Algo.DataStructure
         {
             return parentIndex * 2 + 1;
         }
-        int parentIndex(int childIndex)
+        protected int parentIndex(int childIndex)
         {
             return childIndex / 2;
         }

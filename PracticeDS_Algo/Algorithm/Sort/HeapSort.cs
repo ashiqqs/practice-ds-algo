@@ -38,7 +38,6 @@ namespace PracticeDS_Algo.Algorithm.Sort
                 min_heapify(numbers, --heap_size, 1);
             }
         }
-
         public override void Execute()
         {
             Helper helper = new Helper();

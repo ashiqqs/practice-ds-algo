@@ -10,8 +10,8 @@ namespace PracticeDS_Algo
     {
         static void Main(string[] args)
         {
-            HeapSort sort = new HeapSort();
-            sort.Execute();
+            ITest queue = new PriorityQueue(100);
+            queue.Execute();
         }
 
     }
