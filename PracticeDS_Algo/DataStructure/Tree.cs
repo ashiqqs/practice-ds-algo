@@ -25,11 +25,13 @@ namespace PracticeDS_Algo
                     TreeNode<T> parent = queue.Dequeue();
                     if(parent.Left is null)
                     {
+                        newNode.Parent = parent;
                         parent.Left = newNode;
                         return;
                     }
                     else if(parent.Right is null)
                     {
+                        newNode.Parent = parent;
                         parent.Right = newNode;
                         return;
                     }
@@ -71,6 +73,7 @@ namespace PracticeDS_Algo
         }
         public TreeNode<T> Left { get; set; }
         public TreeNode<T> Right { get; set; }
+        public TreeNode<T> Parent { get; set; }
         public T Item { get; set; }
     }
 }
