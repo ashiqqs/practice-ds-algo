@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PracticeDS_Algo.DataStructure
 {
-    public class BinarySearchTree
+    public class BinarySearchTree:ITest
     {
         TreeNode<int> Root { get; set; }
         public TreeNode<int> Insert(int item)
@@ -151,6 +151,29 @@ namespace PracticeDS_Algo.DataStructure
             else
             {
                 return MinNode(root.Left);
+            }
+        }
+
+        public void Execute()
+        {
+            BinarySearchTree tree = new BinarySearchTree();
+            tree.Insert(45);
+            tree.Insert(67);
+            tree.Insert(23);
+            tree.Insert(32);
+            tree.Insert(5);
+            tree.Insert(15);
+            tree.Insert(25);
+            tree.Insert(35);
+            tree.Insert(28);
+            var root = tree.Insert(10);
+            tree.InOrder(root);
+            Console.WriteLine();
+            var node = tree.Find(23);
+            if (node != null)
+            {
+                root = tree.Delete(root, node);
+                tree.InOrder(root);
             }
         }
     }
