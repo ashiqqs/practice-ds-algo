@@ -56,7 +56,7 @@ namespace PracticeDS_Algo.DataStructure
                 Length += 1;
             }
         }
-        public void Prepend(T value)
+        public Node<T> Prepend(T value)
         {
             Node<T> head = new Node<T>(value);
             if (Head is null)
@@ -71,8 +71,9 @@ namespace PracticeDS_Algo.DataStructure
                 Head = head;
             }
             Length += 1;
+            return head;
         }
-        public void Postpend(T value)
+        public Node<T> Postpend(T value)
         {
             Node<T> node = new Node<T>(value);
             if (Tail is null)
@@ -88,6 +89,7 @@ namespace PracticeDS_Algo.DataStructure
             }
 
             Length += 1;
+            return node;
         }
         public void Remove(T item, bool isAll = true)
         {
@@ -177,6 +179,42 @@ namespace PracticeDS_Algo.DataStructure
             }
         }
 
+        /// <summary>
+        /// Linked list cycle detection using Froyed Cycle finding Algorithm
+        /// TimeComplexity O(n) | SpaceComplexity O(1)
+        /// </summary>
+        /// <param name="Head"></param>
+        /// <returns></returns>
+        public Node<T> HasCycle()
+        {
+            Node<T> tortoise = Head;
+            Node<T> hare = Head;
+            while (hare != null)
+            {
+                if(hare.Next!=null && hare.Next.Next!=null)
+                {
+                    hare = hare.Next.Next;
+                }
+                else
+                {
+                    return null;
+                }
+                tortoise = tortoise.Next;
+                if(tortoise == hare)
+                {
+                    break;
+                }
+            }
+            Node<T> tortoise2 = Head;
+            while (tortoise != tortoise2)
+            {
+                tortoise = tortoise.Next;
+                tortoise2 = tortoise2.Next;
+            }
+            return tortoise2;
+        }
+
+
         public override string ToString()
         {
             string values="";
@@ -193,7 +231,7 @@ namespace PracticeDS_Algo.DataStructure
     }
 
 
-    class Node<T>
+    public class Node<T>
     {
         public Node(T item)
         {
