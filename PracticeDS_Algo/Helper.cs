@@ -42,13 +42,18 @@ namespace PracticeDS_Algo
         }
         public void PrintArray<T>(T[] values)
         {
-            int i = 0;
+            int len = values.Length;
             Console.WriteLine();
-            foreach (var val in values)
+            Console.Write("[");
+            for (int i=0; i<len; i++)
             {
-                Console.Write($" [{i++}]{val} ");
+                Console.Write($"{values[i]}");
+                if (i != len - 1)
+                {
+                    Console.Write(",");
+                }
             }
-            Console.WriteLine();
+            Console.WriteLine("]");
         }
 
         /// <summary>

@@ -10,12 +10,11 @@ namespace PracticeDS_Algo
     {
         static unsafe void Main(string[] args)
         {
-            PrefixTree trie = new PrefixTree();
-            trie.Insert("ball");
-            trie.Insert("bbc");
-            trie.Insert("bat");
-            Console.WriteLine(trie.Contains("bar"));
-            Console.WriteLine(trie.Contains("ball"));
+            ITest test = new Quick();
+
+            test.Execute();
+
+            Console.ReadKey();
 
         }
 
