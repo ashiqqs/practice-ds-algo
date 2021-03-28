@@ -17,7 +17,14 @@ namespace PracticeDS_Algo.Algorithm.Search
             int item = Convert.ToInt32(Console.ReadLine());
             Console.Write("Searching...");
             int position = Find(numbers, item);
-            Console.WriteLine($"{item} found on Position {position}");
+            if (position > -1)
+            {
+                Console.WriteLine($"{item} found on Position {position}");
+            }
+            else
+            {
+                Console.WriteLine($"{item} not exist in list");
+            }
         }
 
         /// <summary>

@@ -89,4 +89,11 @@ namespace PracticeDS_Algo
             return smallLength < largeLength ? 1 : -1;
         }
     }
+    public enum Color
+    {
+        White=1,
+        Grey,
+        Black,
+        Blue
+    }
 }
