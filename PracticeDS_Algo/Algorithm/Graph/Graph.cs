@@ -4,13 +4,15 @@ using static System.Console;
 
 namespace PracticeDS_Algo.Algorithm.Graph
 {
-    public class Graph
+    public class Graph:IGraph
     {
         protected int[,] graph_arr;
         protected int num_of_vertex, i;
         private int[] adjacent_temp;
 
-        protected void Create()
+        public int NumOfVertex => num_of_vertex;
+
+        public void Create()
         {
             Write("Enter the number of vertex: ");
             num_of_vertex = int.Parse(ReadLine());
@@ -38,5 +40,21 @@ namespace PracticeDS_Algo.Algorithm.Graph
         {
             return graph_arr;
         }
+
+        public int[] GetAdjacent(int vertex)
+        {
+            int[] adj = new int[num_of_vertex];
+            for(int i=0; i<num_of_vertex; i++)
+            {
+                if (graph_arr[vertex, i] == 1)
+                {
+                    adj[i] = 1;
+                }
+            }
+            return adj;
+        }
+
+        public int NumOfEdge=> throw new NotImplementedException();
+
     }
 }
