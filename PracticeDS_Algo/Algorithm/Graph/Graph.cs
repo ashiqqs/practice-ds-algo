@@ -30,7 +30,10 @@ namespace PracticeDS_Algo.Algorithm.Graph
                         foreach (int j in adjacent_temp) { graph_arr[i, j] = 0; }
                         goto TakeAdjacent;
                     }
-                    graph_arr[i,adj] = 1; //Connecting the edge between vertex i and adj
+                    if (adj > -1)
+                    {
+                        graph_arr[i, adj] = 1; //Connecting the edge between vertex i and adj
+                    }
                 }
             }
 

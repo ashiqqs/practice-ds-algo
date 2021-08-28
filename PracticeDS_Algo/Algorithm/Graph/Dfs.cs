@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Console;
 
 namespace PracticeDS_Algo.Algorithm.Graph
@@ -6,9 +7,10 @@ namespace PracticeDS_Algo.Algorithm.Graph
     public class Dfs:IGraphTraverser
     {
         private int[,] graph;
-        private int num_of_vertex, time_stamp, start_point;
+        private int num_of_vertex, time_stamp, start_point=0;
         private int[] previous, discover_time, finising_time;
         private Color[] color;
+        public bool IsDag { get; private set; }
 
         public Dfs(IGraph graphObj)
         {
@@ -67,6 +69,7 @@ namespace PracticeDS_Algo.Algorithm.Graph
                 discover_time[i] = -1;
                 finising_time[i] = -1;
             }
+            IsDag = true;
             for (int i = 0; i<num_of_vertex; i++)
             {
                 if (color[i] == Color.White)
@@ -83,18 +86,38 @@ namespace PracticeDS_Algo.Algorithm.Graph
             discover_time[vertex] = time_stamp;
             for(int j=0; j<num_of_vertex; j++)
             {
-                if (graph[vertex, j] == 1)
+                if (graph[vertex, j] == 1 && color[j] == Color.White)
+                {  
+                    previous[j] = vertex;
+                    dfs_visit(j);
+                }
+                if(graph[vertex,j]==1 && color[j] == Color.Grey)
                 {
-                    if (color[j] == Color.White)
-                    {
-                        previous[j] = vertex;
-                        dfs_visit(j);
-                    }
+                    IsDag = false;
                 }
             }
             color[vertex] = Color.Black;
             time_stamp++;
             finising_time[vertex] = time_stamp;
+        }
+
+        public void TopologicalSort()
+        {
+            int[] sorted = new int[time_stamp+1];
+            Array.Fill(sorted, -1);
+            for(int i=0; i<num_of_vertex; i++)
+            {
+                sorted[finising_time[i]] = i;
+            }
+            WriteLine("-----------Topological Sort------------");
+            Write($"Sorted Sequence: ");
+            for (int i=time_stamp; i>0; i--)
+            {
+                if (sorted[i] > -1)
+                {
+                    Write($"{sorted[i]}->");
+                }
+            }
         }
     }
 }

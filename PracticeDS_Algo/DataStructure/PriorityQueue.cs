@@ -17,6 +17,7 @@ namespace PracticeDS_Algo.DataStructure
         private int max_queue_size;
         private bool isMaxToMin;
 
+        public int Size => heap_size;
         /// <summary>
         /// Time Complexity O(logn)
         /// </summary>
@@ -43,24 +44,24 @@ namespace PracticeDS_Algo.DataStructure
         /// Time Complexity O(logn)
         /// </summary>
         /// <returns></returns>
-        public int Extract()
+        public int ExtractMin()
         {
             if (heap_size < 1) { throw new IndexOutOfRangeException(); }
             int value = heap[1];
             heap[1] = heap[heap_size];
-
-            if (isMaxToMin)
-            {
-                max_heapify(heap, heap_size, 1);
-            }
-            else
-            {
-                min_heapify(heap, heap_size, 1);
-            }
+            min_heapify(heap, heap_size, 1);
             heap_size--;
             return value;
         }
-
+        public int ExtractMax()
+        {
+            if (heap_size < 1) { throw new IndexOutOfRangeException(); }
+            int value = heap[1];
+            heap[1] = heap[heap_size];
+            max_heapify(heap, heap_size, 1);
+            heap_size--;
+            return value;
+        }
         public override void Execute()
         {
             PriorityQueue max_to_min = new PriorityQueue(10,true);
@@ -72,11 +73,11 @@ namespace PracticeDS_Algo.DataStructure
             max_to_min.Insert(15);
             max_to_min.Insert(80);
             Console.WriteLine("Max to Min: ");
-            Console.WriteLine(max_to_min.Extract());
-            Console.WriteLine(max_to_min.Extract());
-            Console.WriteLine(max_to_min.Extract());
-            Console.WriteLine(max_to_min.Extract());
-            Console.WriteLine(max_to_min.Extract());
+            Console.WriteLine(max_to_min.ExtractMax());
+            Console.WriteLine(max_to_min.ExtractMax());
+            Console.WriteLine(max_to_min.ExtractMax());
+            Console.WriteLine(max_to_min.ExtractMax());
+            Console.WriteLine(max_to_min.ExtractMax());
 
             min_to_max.Insert(45);
             min_to_max.Insert(78);
@@ -84,11 +85,11 @@ namespace PracticeDS_Algo.DataStructure
             min_to_max.Insert(15);
             min_to_max.Insert(80);
             Console.WriteLine("Min to Max: ");
-            Console.WriteLine(min_to_max.Extract());
-            Console.WriteLine(min_to_max.Extract());
-            Console.WriteLine(min_to_max.Extract());
-            Console.WriteLine(min_to_max.Extract());
-            Console.WriteLine(min_to_max.Extract());
+            Console.WriteLine(min_to_max.ExtractMin());
+            Console.WriteLine(min_to_max.ExtractMin());
+            Console.WriteLine(min_to_max.ExtractMin());
+            Console.WriteLine(min_to_max.ExtractMin());
+            Console.WriteLine(min_to_max.ExtractMin());
         }
     }
 }

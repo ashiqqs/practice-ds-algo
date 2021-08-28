@@ -3,26 +3,27 @@ using PracticeDS_Algo.Algorithm.Search;
 using PracticeDS_Algo.Algorithm.Sort;
 using PracticeDS_Algo.DataStructure;
 using System;
+using static System.Console;
 using System.Collections.Generic;
+using PracticeDS_Algo.Algorithm.BookPractice;
+using System.Linq;
 
 namespace PracticeDS_Algo
 {
     class Program
     {
-        //Searching an item from a descending sorted list using Binary Search
         static void Main(string[] args)
         {
-            IGraph graph = new Graph();
-            graph.Create();
+            //Permutation permutation = new Permutation();
+            //permutation.GenPermutation(1);
 
-            //IGraphTraverser bfs = new Bfs(graph);
-            //bfs.Traverse();
-            //bfs.PrintPath();
-
-            IGraphTraverser dfs = new Dfs(graph);
-            dfs.Traverse();
-            dfs.PrintPath();
-
+            int source = 1;
+            Dijkstra dijkstra = new Dijkstra();
+            foreach (var item in dijkstra.GetDistance(source).Select((val, idx)=>(val,idx)))
+            {
+                if (item.idx < 1) continue;
+                WriteLine($"From {source} to {item.idx} distance {item.val}");
+            }
         }
     }
 }
